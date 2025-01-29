@@ -1,9 +1,11 @@
-module.exports = async (req, res) => {
+import axios from 'axios';
+
+export default async function handler(req, res) {
   try {
     console.log("Incoming request:", req.query);
     
     const { category } = req.query;
-    const apiKey = process.env.NEWS_API_KEY;
+    const apiKey = process.env.VITE_NEWS_API_KEY;
     
     if (!apiKey) {
       throw new Error("Missing API key");
@@ -19,5 +21,5 @@ module.exports = async (req, res) => {
   } catch (error) {
     console.error('Server Error:', error);
     res.status(500).json({ error: error.message });
-  } // Add this line
+  }
 };
