@@ -1,12 +1,10 @@
 {
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "/api/news.js" }
+    ],
     "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "/api/news.js"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/"
-      }
+      { "handle": "filesystem" },
+      { "src": "/(.*)", "dest": "/index.html" }
     ]
   }
+  
