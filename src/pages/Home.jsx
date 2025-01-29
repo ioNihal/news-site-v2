@@ -10,7 +10,11 @@ const Home = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await axios.get(`/api/news?category=${category}`);
+                const response = await axios.get(
+                    import.meta.env.MODE === 'development'
+                      ? `/api/news?category=${category}`
+                      : `https://news-site-v2.vercel.app/api/news?category=${category}`
+                  );
                 setArticles(response.data.articles);
                 setLoading(false);
             } catch (error) {
